@@ -28,4 +28,20 @@ describe('server routes', () => {
         expect(response.text).toEqual('<h1>blue<h1>');
     });
 
+    it('confirm POST at "/echo" returns status code 200 and plain text with the request body. ', async() => {
+        const content = 'This is content!!!!'
+        
+        const response = await request(app)
+            .post('/echo')
+            .send(content);
+
+        expect({
+            statusCode: 200,
+            text: content
+        }).toEqual({
+            statusCode: response.statusCode,
+            text: response.text
+        });
+    });
+
 });
