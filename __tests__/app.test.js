@@ -1,8 +1,6 @@
 const request = require('supertest');
 const app = require('../lib/app');
 
-
-
 describe('server routes', () => {
     it('GET at "/" returns "hi" ', async() => {
         const response = await request(app)
@@ -29,8 +27,7 @@ describe('server routes', () => {
     });
 
     it('confirm POST at "/echo" returns status code 200 and plain text with the request body. ', async() => {
-        const content = 'This is content!!!!'
-        
+        const content = 'This is content!!!!'        
         const response = await request(app)
             .post('/echo')
             .send(content);
@@ -43,5 +40,4 @@ describe('server routes', () => {
             text: response.text
         });
     });
-
 });
